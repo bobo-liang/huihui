@@ -10,10 +10,12 @@
 			}
 
 			body {
-				background-color: #000000;
 				margin: 0;
-				font-family: Helvetica, sans-serif;;
+				background-image: url(./img/bai.png);
+				font-family: Helvetica, sans-serif;
 				overflow: hidden;
+				background-repeat:no-repeat;
+				background-size: 100% 100%;
 			}
 
 			a {
@@ -119,7 +121,7 @@
 			  height: 100%;	
 			  object-fit: fill;/*扩展 填满 父元素*/
 			}
-						#music{
+			#music{
 				width:44px;
 				height: 44px;
 				background-image: url(assets/music.png);
@@ -140,6 +142,11 @@
 		<link rel="stylesheet" href="css/animate.min.css">
 	</head>
 	<body>
+		<!--<video muted  autoplay="autoplay"  loop="loop" class="aaa" >
+			<source src="img/hai.mp4" type="video/mp4">
+		</video>
+		-->
+	
 		<script src="js/jquery.min.js"></script>
 		<script src="js/three.js"></script>
 		<script src="js/tween.min.js"></script>
@@ -154,14 +161,38 @@
 			<button id="helix"></button>
 			<button id="grid"></button>
 		</div>	
-		<div id="music">
 		
-		<!--audio 音频标签，--> 
-		<!--<audio src="assets/music.mp3" autoplay loop ></audio>-->
+			
+		<div id="music">
+				<audio id = "vd" autoplay="True" loop="true">
+				<source src="../audio/love.m4a">
+				</audio>
+				
 		</div>
-
 		
 		<script>
+		
+		//window.onload = function(){
+		//	var audio = document.getElementById('vd');
+			//audio.play();
+		//audio.pause();
+		//}
+		
+		function toggleSound() {undefined
+            var music = document.getElementById("vd");//获取ID  
+                console.log(music);
+                console.log(music.paused);
+            if (music.paused) { //判读是否播放  
+                music.paused=false;
+                music.play(); //没有就播放
+            }  
+            
+        }
+
+		setInterval("toggleSound()",1);
+
+		
+		
 			var personArray = new Array;
     		var CurPersonNum = 0;
     		// animate
@@ -194,8 +225,8 @@
 							$('.show_info').removeClass(_out[rand_out]);
 							$('.show_info').hide();
 						},1500);
-					},500);
-				},500);
+					},1000);
+				},1000);
 			},500);
 
 			// 生成虚拟数据
